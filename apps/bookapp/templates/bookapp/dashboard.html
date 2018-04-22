@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Reviews</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %} 
+        <div id='wrapper'>
+            <div id='header'>
+                <h3>Welcome {{user.alias}}</h3>
+                <a href="/add">Add Book and review</a>
+                <a href="logout">log out</a>
+            </div>
+            <div id='reviews'>
+                <h2>Recent Book reviews: </h2>
+                {%for rev in review %}
+                <li> <h3>><a href="/book/{{rev.book.id}}">{{rev.book.book_title}}</a></h3></li>
+                <li> by: <a href="/user/{{rev.user.id}}" >{{rev.user.alias}}</a></li>
+                <li> {{rev.review}}</li>
+            {% endfor%}
+            </div>
+            <div id='all_books' >
+                <h2>Other Books with Reviews:</h2>
+                <p> add div overflow: auto; to styles sheet</p>
+                {%for book in books %}
+                    <li> <a href="/book/{{book.id}}">{{book.book_title}}</a></li>
+                {% endfor%}
+            </div>
+            
+          
+        </div>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Reviews</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id='wrapper'>
+            <div id='register'>
+                <h2>Add a new book Title and Review:</h2>
+                <form action="/add_book" method='POST'>
+                    {% csrf_token %}
+                    Book Title: <input type='text' name='title'>
+                    Author: <input type='text' name='author'>
+                    <select name='select'>
+                            <option >none</option>
+                        {%for book in books%}
+                            <option >{{book.book_title}}</option>
+                        {%endfor%}  
+                    </select> 
+                    Review  <textarea rows="4" cols="50" name='review'></textarea> 
+                    <input type='submit' value='submit'>
+                </form>
+            </div>
+          
+            </div>
+        </div>
+    </body>
+</html>

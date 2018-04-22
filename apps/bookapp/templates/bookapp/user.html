@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> {{user.alias}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id='wrapper'>
+            <div id='header'>
+                <a href="/logout">log out</a>
+                <a href="/dashboard">HOME</a>
+                <h3>User Alias: {{user.alias}}</h3>
+                <p>name: {{user.name}}</p>
+                <p>email: {{user.email}}</p>
+                <p>total reviews: {{review_count}} </p>
+            </div>
+            <div id='reviews'>
+                <h2>posted reviews on the following books:</h2>
+                {%for rev in review%}
+                <p> <a href="/book/{{rev.book.id}}">{{rev.book.book_title}}</a></p>
+                  <p>{{rev.review}}</p>
+                {%endfor%}
+            </div>
+           
+            
+          
+        </div>
+    </body>
+</html>

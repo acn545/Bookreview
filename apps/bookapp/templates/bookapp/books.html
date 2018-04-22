@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{book.book_title}}</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id='wrapper'>
+            <div id='header'>
+                <h3>{{book.book_title}}</h3>
+                <p>Author: {{book.author}}</p>
+                <a href="/dashboard">HOME</a>
+                <a href="logout">log out</a>
+            </div>
+            <div id='reviews'>
+                <h2>Reviews:</h2>
+                {%for rev in review%}
+                <p> <a href="/book/{{rev.book.id}}">{{rev.book.book_title}}</a></p>
+                  <p>{{rev.review}}</p>
+                {%endfor%}
+            </div>
+            <div id='all_books' >
+                <h2>Add Review</h2>
+                <form action='review' method='POST'>
+                <textarea cols='50' rows='4'name='review'></textarea>
+                <input type="submit" value='add review'>
+                </form>
+            </div>
+            
+          
+        </div>
+    </body>
+</html>
